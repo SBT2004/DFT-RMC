@@ -8,7 +8,7 @@ double gr[] = { 0.0, 0.0, 2.0, 2.0, 0.0 };
 double Ndens[] = 0.5
 
 double q[len];
-//q tömb kitöltéséhez szükséges paraméterek
+//q tömb kitöltéséhez szükséges paraméterekk
 //Majd a felhasználó fogja megadni
 double dq=1, min=1.0, max=20.0;
 int len = (max - min) / dq;
