@@ -1,0 +1,5 @@
+M=40
+DENSITY = 2
+MIN=5
+MAX=10
+DQ=1

@@ -1,5 +1,6 @@
 #pragma once
 
+// egy kétdimenziós mátrixot ír le
 typedef struct {
 	int nrow; //sorok száma
 	int ncol; //oszlopok száma
@@ -13,15 +14,16 @@ matrix* create_matrix_and_initialize(int nrow, int ncol, double initial_values[]
 
 matrix* create_matrix(int nrow, int ncol);
 
+double get_value(const matrix* m, int row, int col);
+
 void set_value(matrix* m, int row, int col, double value);
 
-matrix* matrix_product(matrix* m1, matrix* m2);
+matrix* matrix_product(const matrix* m1, const matrix* m2);
 
-matrix* transpose(matrix* m);
+matrix* transpose(const matrix* m);
 
-double get_value(matrix* m, int row, int col);
+void visualize(const matrix* m);
 
-void visualize(matrix* m);
+matrix** matrix_to_vectors(const matrix* mat_in);
 
-matrix** matrix_to_vectors(matrix* mat_in);
-
+void row_addition(matrix* mat, int row, int row_to_add);

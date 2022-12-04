@@ -140,16 +140,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cfg.c" />
-    <ClCompile Include="data_in.c" />
-    <ClCompile Include="extras.c" />
-    <ClCompile Include="Fourier.c" />
+    <ClCompile Include="common.c" />
+    <ClCompile Include="io.c" />
+    <ClCompile Include="density.c" />
+    <ClCompile Include="fourier.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="matrix.c" />
+    <ClCompile Include="mystring.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="common.h" />
+    <ClInclude Include="io.h" />
+    <ClInclude Include="density.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="fourier.h" />
+    <ClInclude Include="mystring.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="config.txt" />
+    <Text Include="input.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
