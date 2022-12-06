@@ -1,4 +1,5 @@
-﻿#include <stdio.h>
+﻿// (C) Soczó Bálint
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "cfg.h"

@@ -1,3 +1,4 @@
+// (C) Soczó Bálint
 #include <stdlib.h>
 #include <stdio.h>
 #include "common.h"

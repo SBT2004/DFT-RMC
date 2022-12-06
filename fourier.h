@@ -1,3 +1,4 @@
+// (C) Soczó Bálint
 #pragma once
 
 #include "matrix.h"

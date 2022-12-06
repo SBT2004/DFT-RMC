@@ -1,4 +1,5 @@
-﻿#include <string.h>
+﻿// (C) Soczó Bálint
+#include <string.h>
 #include <ctype.h>
 #include "mystring.h"
 

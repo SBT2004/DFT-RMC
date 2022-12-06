@@ -1,4 +1,5 @@
-﻿#include <stdio.h>
+﻿// (C) Soczó Bálint
+#include <stdio.h>
 #include <stdlib.h>
 #include "matrix.h"
 #include "fourier.h"

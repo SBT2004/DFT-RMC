@@ -1,3 +1,4 @@
+// (C) Soczó Bálint
 #define _CRTDBG_MAP_ALLOC
 #pragma once
 

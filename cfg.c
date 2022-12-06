@@ -1,4 +1,5 @@
-﻿#include <float.h>
+﻿// (C) Soczó Bálint
+#include <float.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdbool.h>

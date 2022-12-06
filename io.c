@@ -1,4 +1,5 @@
-﻿#include <stdio.h>
+﻿// (C) Soczó Bálint
+#include <stdio.h>
 #include <stdlib.h>
 #include "cfg.h"
 #include "matrix.h"
