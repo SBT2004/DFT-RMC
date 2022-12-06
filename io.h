@@ -1,3 +1,4 @@
+// (C) Soczó Bálint
 #pragma once
 
 matrix* read_r_and_gr_from_csv(const char* path_to_csv);
