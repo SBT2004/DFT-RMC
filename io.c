@@ -1,13 +1,15 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
+#include "cfg.h"
 #include "matrix.h"
 #include "io.h"
 #include "common.h"
 
 #pragma warning(disable:4996)
 
-// 
+// A megadott input file-ból kiolvassa r-t és gr-t,
+// majd visszadja őket egy 2 oszlopos mátrixban.
+// A visszadott pointert a hívónak fel kell szabadítania.
 matrix* read_r_and_gr_from_csv(const char* path_to_csv) {
 	FILE* fp = fopen(path_to_csv, "r");
 
@@ -49,7 +51,7 @@ matrix* read_r_and_gr_from_csv(const char* path_to_csv) {
 	return m;
 }
 
-// 
+// kiír két mátrixot egy csv file-ba
 void csv_out(const char* csv_out_file_path, const matrix* q_mat, const matrix* sq_mat)
 {
 	FILE* fp = fopen(csv_out_file_path, "w");

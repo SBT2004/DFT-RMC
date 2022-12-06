@@ -21,9 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b9aa1b69-a4ae-4b1c-ad69-10f8986b3514}</ProjectGuid>
+    <ProjectGuid>{1687507e-64f1-4560-b025-c4cc344ea960}</ProjectGuid>
     <RootNamespace>DFT</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>DFT</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -139,7 +140,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cfg.c" />
+    <ClCompile Include="common.c" />
+    <ClCompile Include="io.c" />
+    <ClCompile Include="density.c" />
+    <ClCompile Include="fourier.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="matrix.c" />
+    <ClCompile Include="mystring.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="common.h" />
+    <ClInclude Include="io.h" />
+    <ClInclude Include="density.h" />
+    <ClInclude Include="cfg.h" />
+    <ClInclude Include="matrix.h" />
+    <ClInclude Include="fourier.h" />
+    <ClInclude Include="mystring.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="config.txt" />
+    <Text Include="input.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

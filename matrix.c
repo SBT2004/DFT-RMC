@@ -3,26 +3,9 @@
 #include "matrix.h"
 #include "common.h"
 
-void init_zero(matrix* m, int nrow, int ncol)
-{
-	for (int row = 0; row < nrow; row++)
-	{
-		for (int col = 0; col < ncol; col++)
-		{
-			set_value(m, row, col, 0.0);
-		}
-	}
-}
-
-matrix* create_zero_matrix(int nrow, int ncol)
-{
-	matrix* m = create_matrix(nrow, ncol);
-
-	init_zero(m, nrow, ncol);
-
-	return m;
-}
-
+// Meghívja create_matrix-ot,
+// majd set_value-val feltölti kívánt értékekkel a létrehozzott mátrixot
+// A visszadott pointert a hívónak fel kell szabadítania.
 matrix* create_matrix_and_initialize(int nrow, int ncol, double initial_values[])
 {
 	matrix* m = create_matrix(nrow, ncol);
@@ -59,7 +42,8 @@ matrix* create_matrix(int nrow, int ncol)
 	return m;
 }
 
-//átírja m mátrix rowadik sorának és coladik oszlopának értékét value-ra
+// Átírja m mátrix rowadik sorának és coladik oszlopának értékét value-ra.
+// A legelső sor és oszlop indexe 0.
 void set_value(matrix* m, int row, int col, double value) {
 	if (row >= m->nrow)
 	{
@@ -94,8 +78,26 @@ double get_value(const matrix* m, int row, int col) {
 	return m->val[row * m->ncol + col];
 }
 
-// mátrixszorzást hajt végre m1-en és m2-en,
-// egy új mátrixban visszaadja a szorzatot
+// Szétszedi a mátrixot egyoszlopos mátrixok tömbjére.
+matrix** matrix_to_vectors(const matrix* mat_in) {
+	int col_mat = mat_in->ncol, row_mat = mat_in->nrow;
+	matrix** arr = (matrix**)safe_malloc(sizeof(double*) * col_mat);
+	for (int col = 0;col < col_mat;col++)
+	{
+		//egy oszlop felépítése
+		matrix* temp = create_matrix(row_mat, 1);
+		for (int row = 0; row < row_mat; row++)
+		{
+			set_value(temp, row, 0, get_value(mat_in, row, col));
+		}
+		arr[col] = temp;
+	}
+
+	return arr;
+}
+
+// Mátrixszorzást hajt végre m1-en és m2-en,
+// egy új mátrixban visszaadja a szorzatot.
 matrix* matrix_product(const matrix* m1, const matrix* m2) {
 	int row1 = m1->nrow, col1 = m1->ncol, row2 = m2->nrow, col2 = m2->ncol;
 
@@ -119,7 +121,7 @@ matrix* matrix_product(const matrix* m1, const matrix* m2) {
 	return mat_out;
 }
 
-//visszadja a mátrix transzponáltját egy új mátrixban
+// Visszadja a mátrix transzponáltját egy új mátrixban.
 matrix* transpose(const matrix* m)
 {
 	int row_in = m->nrow, col_in = m->ncol;
@@ -135,7 +137,7 @@ matrix* transpose(const matrix* m)
 	return transposed;
 }
 
-//kiírja a mátrixot a konzolba
+// Kiírja a mátrixot a konzolba.
 void visualize(const matrix* m) {
 	int nrow = m->nrow, ncol = m->ncol;
 	for (int row = 0; row < nrow; row++)
@@ -148,29 +150,34 @@ void visualize(const matrix* m) {
 	}
 }
 
-//szétszedi a mátrixot egyoszlopos mátrixok tömbjére
-matrix** matrix_to_vectors(const matrix* mat_in) {
-	int col_mat = mat_in->ncol, row_mat = mat_in->nrow;
-	matrix** arr = (matrix**)safe_malloc(sizeof(double*) * col_mat);
-	for (int col = 0;col < col_mat;col++)
-	{
-		//egy oszlop felépítése
-		matrix* temp = create_matrix(row_mat, 1);
-		for (int row = 0; row < row_mat; row++)
-		{
-			set_value(temp, row, 0, get_value(mat_in, row, col));
-		}
-		arr[col] = temp;
-	}
-
-	return arr;
-}
-
-//összadja a mátrix rowadik sorát a row_to_add-adik sorral,
-//az eredményt berakja a rowadik sorba
+// Összadja a mátrix rowadik sorát a row_to_add-adik sorral,
+// az eredményt berakja a rowadik sorba.
 void row_addition(matrix* mat, int row, int row_to_add) {
 	for (int i = 0; i < mat->ncol; i++)
 	{
 		set_value(mat, row, i, get_value(mat, row, i) + get_value(mat, row_to_add, i));
 	}
+}
+
+// Bekér egy mátrixot és feltölti az elemeit nullákkal.
+void init_zero(matrix* m, int nrow, int ncol)
+{
+	for (int row = 0; row < nrow; row++)
+	{
+		for (int col = 0; col < ncol; col++)
+		{
+			set_value(m, row, col, 0.0);
+		}
+	}
+}
+
+// Létrehoz egy mátrixot, majd feltölti az elemeit nullákkal.
+// A visszadott pointert a hívónak fel kell szabadítania.
+matrix* create_zero_matrix(int nrow, int ncol)
+{
+	matrix* m = create_matrix(nrow, ncol);
+
+	init_zero(m, nrow, ncol);
+
+	return m;
 }

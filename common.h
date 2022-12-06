@@ -1,4 +1,7 @@
+#define _CRTDBG_MAP_ALLOC
 #pragma once
+
+#include <stdbool.h>
 
 typedef enum {
 	config_error = -1,
@@ -12,3 +15,7 @@ typedef enum {
 #endif
 
 void* safe_malloc(size_t _Size);
+
+bool lazy_equal(const double a, const double b);
+
+bool is_zero(const double a);

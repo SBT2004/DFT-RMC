@@ -1,9 +1,8 @@
 ﻿#include <string.h>
 #include <ctype.h>
 #include "mystring.h"
-#include "main.h"
 
-//
+// Kisbetűssé alakítja a megadott stringet.
 void string_tolower(char* str) {
 	char* ptr = str;
 	while (*ptr != 0)
@@ -13,6 +12,7 @@ void string_tolower(char* str) {
 	}
 }
 
+// Levágja a whitespace-eket a string két végén.
 void trim(char* str)
 {
 	//Levágja az elejéről a whitespace-eket
@@ -33,6 +33,8 @@ void trim(char* str)
 	}
 }
 
+// Összehasonlít két stringet, és true-val tér vissza, ha
+// (case sensitive módon) azonosak.
 bool equal_string(const char* a, const char* b)
 {
 	return strcmp(a, b) == 0;

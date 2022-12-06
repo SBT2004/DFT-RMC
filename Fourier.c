@@ -7,6 +7,7 @@
 
 // Egy számtani sort generál mintől kezdődően, dq lépésközökkel
 // max-ig. A maxot nem éri el, ha max-min nem osztható dqval.
+// A visszadott pointert a hívónak fel kell szabadítania.
 matrix* generate_q(double dq, double min, double max) {
 	if (dq <= 0.0)
 	{
@@ -49,7 +50,8 @@ matrix* generate_q(double dq, double min, double max) {
 	return q_mat;
 }
 
-// 
+// Elvégzi elementként r*(gr-1) műveletet, majd az eredmény visszadja egy mátrixban.
+// A visszadott pointert a hívónak fel kell szabadítania.
 matrix* generate_rgr(const matrix* r, const matrix* gr) {
 	int col1 = r->ncol;
 	matrix* rgr = create_matrix(1, col1);
@@ -59,7 +61,8 @@ matrix* generate_rgr(const matrix* r, const matrix* gr) {
 	return rgr;
 }
 
-// 
+// Veszi elemenként az értékek szinuszát, majd az eredmény visszadja egy mátrixban.
+// A visszadott pointert a hívónak fel kell szabadítania.
 matrix* apply_sin_to_all_elements(const matrix* m) {
 	int mat_row = m->nrow, mat_col = m->ncol;
 
@@ -75,6 +78,8 @@ matrix* apply_sin_to_all_elements(const matrix* m) {
 	return mat_out;
 }
 
+// A DFT képlet implementációja, az eredményt egy mátrixban adja vissza.
+// A visszadott pointert a hívónak fel kell szabadítania.
 matrix* discrete_fourier_transform(const matrix* sinqr, const matrix* rgr, const matrix* q, double ndens, double dq) {
 	int rgr_row = rgr->nrow, rgr_col = rgr->ncol, q_row = q->nrow, q_col = q->ncol;
 	 

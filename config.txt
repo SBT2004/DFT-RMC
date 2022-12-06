@@ -1,5 +1,5 @@
-M=40
-DENSITY = 2
-MIN=5
-MAX=10
-DQ=1
+Density = 4.3
+M= 79
+min = 0.36
+max= 45
+dq = 0.06
